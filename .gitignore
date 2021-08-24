@@ -2,6 +2,7 @@
 
 # dependencies
 node_modules/
+lib/
 /.pnp
 .pnp.js
 
@@ -11,14 +12,14 @@ node_modules/
 # production
 /build
 
-lib/
-
 # misc
 .DS_Store
 .env.local
 .env.development.local
+.env.development
 .env.test.local
 .env.production.local
+.env.production
 
 npm-debug.log*
 yarn-debug.log*
@@ -62,4 +63,3 @@ yarn-error.log*
 
 # Snyk
 .dccache
-*.lock
