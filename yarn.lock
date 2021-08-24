@@ -1723,7 +1723,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dyeoh/eslint-config@workspace:*, @dyeoh/eslint-config@workspace:packages/eslint-config":
+"@dyeoh/eslint-config@*, @dyeoh/eslint-config@workspace:packages/eslint-config":
   version: 0.0.0-use.local
   resolution: "@dyeoh/eslint-config@workspace:packages/eslint-config"
   dependencies:
@@ -4601,7 +4601,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "client@workspace:packages/client"
   dependencies:
-    "@dyeoh/eslint-config": "workspace:*"
+    "@dyeoh/eslint-config": "*"
     "@rushstack/eslint-patch": ^1.0.6
     "@testing-library/jest-dom": ^5.11.4
     "@testing-library/react": ^11.1.0
