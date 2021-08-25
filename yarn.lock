@@ -4024,8 +4024,11 @@ __metadata:
     "@typescript-eslint/eslint-plugin": latest
     "@typescript-eslint/parser": ^4.29.3
     eslint: ^7.32.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^3.4.1
     express: ^4.17.1
     global: ^4.4.0
+    prettier: ^2.3.2
     reflect-metadata: ^0.1.13
     sequelize: ^6.6.5
     sequelize-typescript: ^2.1.0
@@ -6530,7 +6533,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:^8.1.0":
+"eslint-config-prettier@npm:^8.1.0, eslint-config-prettier@npm:^8.3.0":
   version: 8.3.0
   resolution: "eslint-config-prettier@npm:8.3.0"
   peerDependencies:
@@ -6660,7 +6663,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:^3.4.0":
+"eslint-plugin-prettier@npm:^3.4.0, eslint-plugin-prettier@npm:^3.4.1":
   version: 3.4.1
   resolution: "eslint-plugin-prettier@npm:3.4.1"
   dependencies:
