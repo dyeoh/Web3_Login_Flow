@@ -1,9 +1,12 @@
 const express = require('express');
+const db = require ('./db.ts');
+
 const port = 3000;
 
 const app = express();
 
-app.get('/',(req,res)=>{
+
+app.get('/',async (req,res) => {
   res.send('Hi!')
 })
 
