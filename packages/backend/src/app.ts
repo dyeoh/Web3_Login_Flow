@@ -4,7 +4,7 @@ import "./db.ts";
 
 import { router } from "./routes";
 
-const port = 3000;
+const port = 80;
 
 const app = express();
 
