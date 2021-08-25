@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize-typescript');
 const { INTEGER, STRING } = require('sequelize');
-const sequelize = new Sequelize({dialect:"sqlite", storage: __dirname + 'sqlite.db'})
+const sequelize = new Sequelize({dialect:"sqlite", storage: __dirname + '/db/sqlite.db'})
 const {User} = require('./models/User.model.ts');
 
 const tryInit = async () => {
@@ -9,6 +9,7 @@ const tryInit = async () => {
   console.log('Connection has been established successfully.');
 } catch (error) {
   console.error('Unable to connect to the database:', error);
+  process.exit(1);
 }
 }
 
@@ -20,7 +21,7 @@ User.init(
 		nonce: {
 			allowNull: false,
 			type: INTEGER.UNSIGNED, // SQLITE will use INTEGER
-			defaultValue: Math.floor(Math.random() * 10000), // Initialize with a random nonce
+			defaultValue: () => Math.floor(Math.random() * 10000), // Initialize with a random nonce
 		},
 		publicAddress: {
 			allowNull: false,
@@ -41,5 +42,3 @@ User.init(
 );
 
 sequelize.sync();
-
-module.exports = {sequelize};

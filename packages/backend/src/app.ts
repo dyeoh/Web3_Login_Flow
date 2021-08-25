@@ -1,12 +1,15 @@
-const express = require('express');
-const db = require ('./db.ts');
+import express, {Request, Response} from 'express';
+require ('./db.ts');
+
+import { router } from './routes';
 
 const port = 3000;
 
 const app = express();
 
+app.use('/api', router);
 
-app.get('/',async (req,res) => {
+app.get('/',async (req :Request, res:Response) => {
   res.send('Hi!')
 })
 
