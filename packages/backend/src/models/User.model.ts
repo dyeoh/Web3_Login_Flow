@@ -1,4 +1,4 @@
-import { Model } from 'sequelize';
+import { Model } from "sequelize";
 
 interface UserAttributes {
   nonce?: number;
@@ -7,7 +7,7 @@ interface UserAttributes {
 }
 
 export class User extends Model<UserAttributes> 
-  implements UserAttributes {
+	implements UserAttributes {
     public nonce!: number;
     public publicAddress!: string;
     public username!: string

@@ -5474,15 +5474,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["@types/validator", [
-        ["npm:13.6.3", {
-          "packageLocation": "./.yarn/cache/@types-validator-npm-13.6.3-0b5e64903d-b06b684d4d.zip/node_modules/@types/validator/",
-          "packageDependencies": [
-            ["@types/validator", "npm:13.6.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["@types/webpack", [
         ["npm:4.41.30", {
           "packageLocation": "./.yarn/cache/@types-webpack-npm-4.41.30-20cc733a2a-a247f48905.zip/node_modules/@types/webpack/",
@@ -7261,7 +7252,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/eslint", "npm:7.28.0"],
             ["@types/express", "npm:4.17.13"],
             ["@types/node", "npm:16.7.1"],
-            ["@types/validator", "npm:13.6.3"],
             ["@typescript-eslint/eslint-plugin", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:4.29.3"],
             ["@typescript-eslint/parser", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:4.29.3"],
             ["eslint", "npm:7.32.0"],
@@ -7270,9 +7260,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["express", "npm:4.17.1"],
             ["global", "npm:4.4.0"],
             ["prettier", "npm:2.3.2"],
-            ["reflect-metadata", "npm:0.1.13"],
             ["sequelize", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:6.6.5"],
-            ["sequelize-typescript", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:2.1.0"],
             ["sqlite3", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:5.0.2"],
             ["ts-node-dev", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:1.1.8"],
             ["tsc", "npm:2.0.3"],
@@ -11665,19 +11653,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/glob-npm-7.1.4-8bd8317a74-f52480fc82.zip/node_modules/glob/",
           "packageDependencies": [
             ["glob", "npm:7.1.4"],
-            ["fs.realpath", "npm:1.0.0"],
-            ["inflight", "npm:1.0.6"],
-            ["inherits", "npm:2.0.4"],
-            ["minimatch", "npm:3.0.4"],
-            ["once", "npm:1.4.0"],
-            ["path-is-absolute", "npm:1.0.1"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:7.1.6", {
-          "packageLocation": "./.yarn/cache/glob-npm-7.1.6-1ce3a5189a-351d549dd9.zip/node_modules/glob/",
-          "packageDependencies": [
-            ["glob", "npm:7.1.6"],
             ["fs.realpath", "npm:1.0.0"],
             ["inflight", "npm:1.0.6"],
             ["inherits", "npm:2.0.4"],
@@ -18050,15 +18025,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["reflect-metadata", [
-        ["npm:0.1.13", {
-          "packageLocation": "./.yarn/cache/reflect-metadata-npm-0.1.13-c525998e20-798d379a7b.zip/node_modules/reflect-metadata/",
-          "packageDependencies": [
-            ["reflect-metadata", "npm:0.1.13"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["regenerate", [
         ["npm:1.4.2", {
           "packageLocation": "./.yarn/cache/regenerate-npm-1.4.2-b296c5b63a-3317a09b2f.zip/node_modules/regenerate/",
@@ -18949,37 +18915,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/sequelize-pool-npm-6.1.0-20cbfc2997-a6e3311c8b.zip/node_modules/sequelize-pool/",
           "packageDependencies": [
             ["sequelize-pool", "npm:6.1.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["sequelize-typescript", [
-        ["npm:2.1.0", {
-          "packageLocation": "./.yarn/cache/sequelize-typescript-npm-2.1.0-d502e184a1-e2374c56ca.zip/node_modules/sequelize-typescript/",
-          "packageDependencies": [
-            ["sequelize-typescript", "npm:2.1.0"]
-          ],
-          "linkType": "SOFT",
-        }],
-        ["virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:2.1.0", {
-          "packageLocation": "./.yarn/__virtual__/sequelize-typescript-virtual-0da8b48395/0/cache/sequelize-typescript-npm-2.1.0-d502e184a1-e2374c56ca.zip/node_modules/sequelize-typescript/",
-          "packageDependencies": [
-            ["sequelize-typescript", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:2.1.0"],
-            ["@types/node", "npm:16.7.1"],
-            ["@types/reflect-metadata", null],
-            ["@types/sequelize", null],
-            ["@types/validator", "npm:13.6.3"],
-            ["glob", "npm:7.1.6"],
-            ["reflect-metadata", "npm:0.1.13"],
-            ["sequelize", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:6.6.5"]
-          ],
-          "packagePeers": [
-            "@types/node",
-            "@types/reflect-metadata",
-            "@types/sequelize",
-            "@types/validator",
-            "reflect-metadata",
-            "sequelize"
           ],
           "linkType": "HARD",
         }]
