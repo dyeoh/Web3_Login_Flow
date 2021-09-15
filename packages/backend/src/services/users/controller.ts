@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 import { User } from "../../models/User.model";
-import web3 from "../../utils/web3-client";
+import { verify } from "./utils";
 
 export const find = async (req: Request, res: Response): Promise<void> => {
   const whereClause =
@@ -41,29 +41,16 @@ export const create = async (
   }
 };
 
-export const verify = async (
+//TODO: rename to login + generate session token
+export const login = async (
   req: CustomRequest<{ publicAddress: string; signature: string }>,
   res: Response
 ): Promise<void> => {
   try {
-    const whereClause =
-      req.body && req.body.publicAddress
-        ? {
-            where: { publicAddress: req.body.publicAddress.toLowerCase() },
-          }
-        : undefined;
+    if (!req.body || !req.body.publicAddress || !req.body.signature)
+      throw new Error("Please specify a pubAddress");
 
-    const user = await User.findOne(whereClause);
-    if (!user?.nonce) throw new Error("user not found");
-    //TODO: fetch nonce from backend
-    //verify signature
-    const recoveredAddress = web3.eth.accounts.recover(
-      user?.nonce.toString(),
-      req.body.signature
-    );
-    if (
-      recoveredAddress.toLowerCase() === req.body.publicAddress.toLowerCase()
-    ) {
+    if (await verify(req.body.publicAddress, req.body.signature)) {
       //REGEN NONCE AND UPDATE HERE
       await User.update(
         {
@@ -82,3 +69,8 @@ export const verify = async (
     res.status(400).send(err.message);
   }
 };
+
+// export const setName = async (
+//   req: CustomRequest<{ publicAddress: string; signature: string, username }>,
+//   res: Response
+// ): Promise<void> => {

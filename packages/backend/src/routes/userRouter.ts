@@ -6,6 +6,6 @@ export const userRouter = express.Router();
 /** GET /api/users */
 userRouter.route("/").get(controller.find);
 userRouter.route("/").post(controller.create);
-userRouter.route("/verify").post(controller.verify);
+userRouter.route("/login").post(controller.login);
 
 export default userRouter;

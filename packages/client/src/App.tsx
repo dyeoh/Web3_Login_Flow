@@ -1,13 +1,17 @@
 import "./App.css";
 
-import { Button, ChakraProvider } from "@chakra-ui/react";
+import { Button, ChakraProvider, Flex } from "@chakra-ui/react";
 import React from "react";
 import Web3 from "web3";
 
+import { AppProvider, useAppContext } from "./providers/AppProvider";
 import APIClient from "./utils/client";
 
 const Web3Login: React.FC = () => {
-  const init = async () => {
+  const { isConnected, setIsConnected, username, setUsername } =
+    useAppContext();
+
+  const connect = async () => {
     try {
       // Request account access if needed
       await (window as any).ethereum.enable();
@@ -28,38 +32,43 @@ const Web3Login: React.FC = () => {
         params: { publicAddress },
       });
 
-      // GET NONCE
+      //todo: create api to return single user
       if (res?.data.length > 0) {
-        const nonce = res.data[0].nonce;
-        const signature = await provider.eth.personal.sign(
-          nonce.toString(),
-          publicAddress,
-          ""
-        );
-        //TODO: sign the nonce and send back to the backend
-        console.log(signature);
-
-        const verificationRes = await APIClient.post("/users/verify", {
-          publicAddress,
-          signature,
-        });
-
-        window.alert(verificationRes?.data);
+        setUsername(res?.data[0]?.username || publicAddress);
+        setIsConnected(true);
       } else {
-        window.alert("Error fetching nonce value");
+        throw new Error("user doesnt exist");
       }
     } catch (error) {
       window.alert(error);
       return;
     }
   };
-  return <Button onClick={init}>eat my ass</Button>;
+
+  return (
+    <Flex
+      minH="100vh"
+      minW="100vw"
+      justifyContent="center"
+      align="center"
+      flexDir="column"
+    >
+      <Button onClick={connect}>
+        {isConnected ? username : "Connect Wallet"}
+      </Button>
+      {isConnected ? (
+        <Button onClick={connect}>Change username</Button>
+      ) : undefined}
+    </Flex>
+  );
 };
 
 const App = () => {
   return (
     <ChakraProvider>
-      <Web3Login />
+      <AppProvider>
+        <Web3Login />
+      </AppProvider>
     </ChakraProvider>
   );
 };
