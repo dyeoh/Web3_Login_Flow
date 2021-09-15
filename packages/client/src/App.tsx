@@ -1,9 +1,12 @@
 import "./App.css";
 
+import axios from "axios";
 import React, { useState } from "react";
 import Web3 from "web3";
 
 import logo from "./logo.svg";
+
+const USER_API = "http://localhost:80/api/users";
 
 const App = () => {
   const [web3, setWeb3] = useState<Web3 | undefined>();
@@ -33,9 +36,23 @@ const App = () => {
 
         const publicAddress = coinbase.toLowerCase();
 
-        console.log(publicAddress);
+        const res = await axios.get(USER_API, { params: { publicAddress } });
+
+        // GET NONCE
+        if (res?.data.length > 0) {
+          const nonce = res.data[0].nonce;
+          const signature = await provider.eth.personal.sign(
+            nonce.toString(),
+            publicAddress,
+            ""
+          );
+          //TODO: sign the nonce and send back to the backend
+          console.log(signature);
+        } else {
+          window.alert("Error fetching nonce value");
+        }
       } catch (error) {
-        window.alert("You need to allow MetaMask.");
+        window.alert(error);
         return;
       }
     }
