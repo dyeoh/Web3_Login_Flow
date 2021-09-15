@@ -1,12 +1,10 @@
 import "./App.css";
 
-import axios from "axios";
 import React, { useState } from "react";
 import Web3 from "web3";
 
 import logo from "./logo.svg";
-
-const USER_API = "http://localhost:80/api/users";
+import APIClient from "./utils/client";
 
 const App = () => {
   const [web3, setWeb3] = useState<Web3 | undefined>();
@@ -36,7 +34,9 @@ const App = () => {
 
         const publicAddress = coinbase.toLowerCase();
 
-        const res = await axios.get(USER_API, { params: { publicAddress } });
+        const res = await APIClient.get("/users", {
+          params: { publicAddress },
+        });
 
         // GET NONCE
         if (res?.data.length > 0) {
@@ -48,6 +48,13 @@ const App = () => {
           );
           //TODO: sign the nonce and send back to the backend
           console.log(signature);
+
+          const verificationRes = await APIClient.post("/users/verify", {
+            publicAddress,
+            signature,
+          });
+
+          window.alert(verificationRes?.data);
         } else {
           window.alert("Error fetching nonce value");
         }
@@ -62,15 +69,13 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <p>Web3 Login Flow</p>
         <p
           className="App-link"
           style={{ cursor: "pointer", textDecoration: "underline" }}
           onClick={login}
         >
-          Login
+          Metamask Login
         </p>
       </header>
     </div>
