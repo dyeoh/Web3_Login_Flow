@@ -7,26 +7,38 @@ import Web3 from "web3";
 import { AppProvider, useAppContext } from "./providers/AppProvider";
 import APIClient from "./utils/client";
 
+const getAddress = async () => {
+  await (window as any).ethereum.enable();
+
+  // We don't know window.web3 version, so we use our own instance of Web3
+  // with the injected provider given by MetaMask
+  const provider = new Web3((window as any).ethereum);
+
+  const coinbase = await provider.eth.getCoinbase();
+  if (!coinbase) {
+    throw new Error("Please activate MetaMask first.");
+  }
+  return coinbase.toLowerCase();
+};
+
+const signMessage = async (message: string, publicAddress: string) => {
+  await (window as any).ethereum.enable();
+
+  // We don't know window.web3 version, so we use our own instance of Web3
+  // with the injected provider given by MetaMask
+  const provider = new Web3((window as any).ethereum);
+
+  //Metamask doesnt expect a password so leave blank
+  return provider.eth.personal.sign(message, publicAddress, "");
+};
+
 const Web3Login: React.FC = () => {
   const { isConnected, setIsConnected, username, setUsername } =
     useAppContext();
 
   const connect = async () => {
     try {
-      // Request account access if needed
-      await (window as any).ethereum.enable();
-
-      // We don't know window.web3 version, so we use our own instance of Web3
-      // with the injected provider given by MetaMask
-      const provider = new Web3((window as any).ethereum);
-
-      const coinbase = await provider.eth.getCoinbase();
-      if (!coinbase) {
-        window.alert("Please activate MetaMask first.");
-        return;
-      }
-
-      const publicAddress = coinbase.toLowerCase();
+      const publicAddress = await getAddress();
 
       const res = await APIClient.get("/users", {
         params: { publicAddress },
@@ -45,6 +57,33 @@ const Web3Login: React.FC = () => {
     }
   };
 
+  const changeUser = async () => {
+    try {
+      const publicAddress = await getAddress();
+
+      const res = await APIClient.get("/users", {
+        params: { publicAddress },
+      });
+
+      //todo: create api to return single user
+      if (res?.data.length > 0 || !publicAddress) {
+        const signature = await signMessage(
+          res?.data[0]?.nonce.toString(),
+          publicAddress
+        );
+        await APIClient.patch("/users/username", {
+          signature,
+          publicAddress,
+          username: "asseater",
+        });
+      } else {
+        throw new Error("user doesnt exist");
+      }
+    } catch (err) {
+      window.alert(err);
+    }
+  };
+
   return (
     <Flex
       minH="100vh"
@@ -57,7 +96,7 @@ const Web3Login: React.FC = () => {
         {isConnected ? username : "Connect Wallet"}
       </Button>
       {isConnected ? (
-        <Button onClick={connect}>Change username</Button>
+        <Button onClick={changeUser}>Change username</Button>
       ) : undefined}
     </Flex>
   );

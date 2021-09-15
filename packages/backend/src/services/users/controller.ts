@@ -70,7 +70,32 @@ export const login = async (
   }
 };
 
-// export const setName = async (
-//   req: CustomRequest<{ publicAddress: string; signature: string, username }>,
-//   res: Response
-// ): Promise<void> => {
+export const setName = async (
+  req: CustomRequest<{
+    publicAddress: string;
+    signature: string;
+    username: string;
+  }>,
+  res: Response
+): Promise<void> => {
+  try {
+    const { publicAddress, signature, username } = req.body;
+    if (await verify(publicAddress, signature)) {
+      await User.update(
+        {
+          nonce: Math.floor(Math.random() * 10000),
+          publicAddress: req.body.publicAddress.toLowerCase(),
+          username,
+        },
+        {
+          where: { publicAddress: req.body.publicAddress.toLowerCase() },
+        }
+      );
+    } else {
+      throw new Error("invalid sig");
+    }
+    res.status(200);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
