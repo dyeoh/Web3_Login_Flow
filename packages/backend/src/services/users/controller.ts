@@ -64,9 +64,19 @@ export const verify = async (
     if (
       recoveredAddress.toLowerCase() === req.body.publicAddress.toLowerCase()
     ) {
+      //REGEN NONCE AND UPDATE HERE
+      await User.update(
+        {
+          nonce: Math.floor(Math.random() * 10000),
+          publicAddress: req.body.publicAddress.toLowerCase(),
+        },
+        {
+          where: { publicAddress: req.body.publicAddress.toLowerCase() },
+        }
+      );
       res.status(200).send("Success!");
     } else {
-      throw new Error("Public address doesn't match");
+      throw new Error("Invalid signature");
     }
   } catch (err) {
     res.status(400).send(err.message);
