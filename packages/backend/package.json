@@ -7,9 +7,11 @@
     "start": "ts-node-dev --respawn --pretty --transpile-only ./src/app.ts"
   },
   "dependencies": {
+    "@types/express-jwt": "^6.0.2",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-jwt": "^6.1.0",
     "global": "^4.4.0",
     "jsonwebtoken": "^8.5.1",
     "sequelize": "^6.6.5",

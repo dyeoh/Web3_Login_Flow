@@ -5,7 +5,7 @@ import cors from "cors";
 import "./db.ts";
 import { router } from "./routes";
 
-const port = 80;
+const port = 2000;
 
 const app = express();
 

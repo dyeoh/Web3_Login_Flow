@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 
 import { User } from "../../models/User.model";
 import { verify } from "./utils";
+import jwt from "jsonwebtoken";
+import config from "../../utils/jwt-config";
 
 export const find = async (req: Request, res: Response): Promise<void> => {
   const whereClause =
@@ -61,7 +63,18 @@ export const login = async (
           where: { publicAddress: req.body.publicAddress.toLowerCase() },
         }
       );
-      res.status(200).send("Success!");
+      res.status(200).send(
+        jwt.sign(
+          {
+            publicAddress: req.body.publicAddress,
+          },
+          config.secret,
+          {
+            algorithm: config.algorithms[0],
+            expiresIn: 3000,
+          }
+        )
+      );
     } else {
       throw new Error("Invalid signature");
     }
