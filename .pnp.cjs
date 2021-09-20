@@ -7561,6 +7561,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/express-jwt", [
+        ["npm:6.0.2", {
+          "packageLocation": "./.yarn/cache/@types-express-jwt-npm-6.0.2-8b2355a23b-0fffb22221.zip/node_modules/@types/express-jwt/",
+          "packageDependencies": [
+            ["@types/express-jwt", "npm:6.0.2"],
+            ["@types/express", "npm:4.17.13"],
+            ["@types/express-unless", "npm:0.5.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/express-serve-static-core", [
         ["npm:4.17.24", {
           "packageLocation": "./.yarn/cache/@types-express-serve-static-core-npm-4.17.24-cd6b9fd3ba-2f0b471126.zip/node_modules/@types/express-serve-static-core/",
@@ -7569,6 +7580,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:16.7.1"],
             ["@types/qs", "npm:6.9.7"],
             ["@types/range-parser", "npm:1.2.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/express-unless", [
+        ["npm:0.5.2", {
+          "packageLocation": "./.yarn/cache/@types-express-unless-npm-0.5.2-0981f63b32-31446f1871.zip/node_modules/@types/express-unless/",
+          "packageDependencies": [
+            ["@types/express-unless", "npm:0.5.2"],
+            ["@types/express", "npm:4.17.13"]
           ],
           "linkType": "HARD",
         }]
@@ -9206,6 +9227,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["async", [
+        ["npm:1.5.2", {
+          "packageLocation": "./.yarn/cache/async-npm-1.5.2-e971969e27-fe5d6214d8.zip/node_modules/async/",
+          "packageDependencies": [
+            ["async", "npm:1.5.2"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:2.6.3", {
           "packageLocation": "./.yarn/cache/async-npm-2.6.3-2de4150248-5e5561ff8f.zip/node_modules/async/",
           "packageDependencies": [
@@ -9770,6 +9798,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/eslint", "npm:7.28.0"],
             ["@types/eslint-plugin-prettier", "npm:3.1.0"],
             ["@types/express", "npm:4.17.13"],
+            ["@types/express-jwt", "npm:6.0.2"],
             ["@types/node", "npm:16.7.1"],
             ["@types/prettier", "npm:2.3.2"],
             ["@types/sqlite3", "npm:3.1.7"],
@@ -9781,6 +9810,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-prettier", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:8.3.0"],
             ["eslint-plugin-prettier", "virtual:aa59773ac87791c4813d53447077fcf8a847d6de5a301d34dc31286584b1dbb26d30d3adb5b4c41c1e8aea04371e926fda05c09c6253647c432e11d872a304ba#npm:3.4.1"],
             ["express", "npm:4.17.1"],
+            ["express-jwt", "npm:6.1.0"],
             ["global", "npm:4.4.0"],
             ["jsonwebtoken", "npm:8.5.1"],
             ["prettier", "npm:2.3.2"],
@@ -13821,6 +13851,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["express-jwt", [
+        ["npm:6.1.0", {
+          "packageLocation": "./.yarn/cache/express-jwt-npm-6.1.0-371ea96247-0c5a4ee4aa.zip/node_modules/express-jwt/",
+          "packageDependencies": [
+            ["express-jwt", "npm:6.1.0"],
+            ["async", "npm:1.5.2"],
+            ["express-unless", "npm:1.0.0"],
+            ["jsonwebtoken", "npm:8.5.1"],
+            ["lodash.set", "npm:4.3.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["express-unless", [
+        ["npm:1.0.0", {
+          "packageLocation": "./.yarn/cache/express-unless-npm-1.0.0-e43c035a2a-0f27f8eae1.zip/node_modules/express-unless/",
+          "packageDependencies": [
+            ["express-unless", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["ext", [
         ["npm:1.5.0", {
           "packageLocation": "./.yarn/cache/ext-npm-1.5.0-02255e1c5a-71f3e25218.zip/node_modules/ext/",
@@ -17770,6 +17822,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/lodash.once-npm-4.1.1-d8ba329ead-d768fa9f9b.zip/node_modules/lodash.once/",
           "packageDependencies": [
             ["lodash.once", "npm:4.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["lodash.set", [
+        ["npm:4.3.2", {
+          "packageLocation": "./.yarn/cache/lodash.set-npm-4.3.2-7586c942c2-a9122f49ee.zip/node_modules/lodash.set/",
+          "packageDependencies": [
+            ["lodash.set", "npm:4.3.2"]
           ],
           "linkType": "HARD",
         }]

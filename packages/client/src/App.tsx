@@ -46,10 +46,11 @@ const Web3Login: React.FC = () => {
 
       //todo: create api to return single user
       if (res?.data.length > 0) {
-        setUsername(res?.data[0]?.username || publicAddress);
-        setIsConnected(true);
+        await login();
       } else {
-        throw new Error("user doesnt exist");
+        await register(publicAddress);
+
+        //throw new Error("user doesnt exist");
       }
     } catch (error) {
       window.alert(error);
@@ -57,7 +58,7 @@ const Web3Login: React.FC = () => {
     }
   };
 
-  const changeUser = async () => {
+  const login = async () => {
     try {
       const publicAddress = await getAddress();
 
@@ -71,14 +72,25 @@ const Web3Login: React.FC = () => {
           res?.data[0]?.nonce.toString(),
           publicAddress
         );
-        await APIClient.patch("/users/username", {
+        await APIClient.post("/users/login", {
           signature,
           publicAddress,
-          username: "asseater",
         });
+        setUsername(publicAddress);
+        setIsConnected(true);
       } else {
         throw new Error("user doesnt exist");
       }
+    } catch (err) {
+      window.alert(err);
+    }
+  };
+
+  const register = async (publicAddress: string) => {
+    try {
+      await APIClient.post("/users", {
+        publicAddress,
+      });
     } catch (err) {
       window.alert(err);
     }
@@ -95,9 +107,6 @@ const Web3Login: React.FC = () => {
       <Button onClick={connect}>
         {isConnected ? username : "Connect Wallet"}
       </Button>
-      {isConnected ? (
-        <Button onClick={changeUser}>Change username</Button>
-      ) : undefined}
     </Flex>
   );
 };
