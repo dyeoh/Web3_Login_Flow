@@ -9,11 +9,6 @@ export const userRouter = express.Router();
 userRouter.route("/").get(controller.find);
 userRouter.route("/register").post(controller.create);
 userRouter.route("/login").post(controller.login);
-userRouter
-  .route("/username")
-  .patch(controller.setName, jwt(config), (req, res) => {
-    console.log(req);
-    res.sendStatus(200);
-  });
+userRouter.route("/username").patch(jwt(config), controller.setName);
 
 export default userRouter;
